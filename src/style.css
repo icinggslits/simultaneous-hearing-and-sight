@@ -1,0 +1,387 @@
+:root {
+    --measuringBlockResizeSize: 15px
+}
+
+.__sign_SHAS_panel {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.06), 0 2px 4px rgba(0, 0, 0, 0.06), 0 4px 4px rgba(0, 0, 0, 0.06), 0 8px 8px rgba(0, 0, 0, 0.06), 0 16px 16px rgba(0, 0, 0, 0.06), 0 -4px 16px rgba(0, 0, 0, 0.07);
+    z-index: 100000;
+}
+.__sign_SHAS_panel.hide {
+    display: none;
+}
+.__sign_SHAS_panel .top, .__sign_SHAS_panel .bottom {
+    display: flex;
+    width: 100%;
+    flex-basis: 24px;
+    background-color: gainsboro;
+}
+.__sign_SHAS_panel .top .left {
+    position: relative;
+    display: flex;
+    flex-grow: 1;
+}
+.__sign_SHAS_panel .top .left .back {
+    flex-basis: 24px;
+    position: relative;
+    cursor: pointer;
+    display: none;
+}
+.__sign_SHAS_panel .top .left .back .back_line_1 {
+    position: absolute;
+    width: 35%;
+    height: 1px;
+    background-color: grey;
+    left: 7px;
+    top: 15px;
+    transform: rotate(45deg);
+}
+.__sign_SHAS_panel .top .left .back .back_line_2 {
+    position: absolute;
+    width: 35%;
+    height: 1px;
+    background-color: grey;
+    left: 7px;
+    top: 9px;
+    transform: rotate(135deg);
+}
+.__sign_SHAS_panel .top .right {
+    position: relative;
+    flex-basis: 24px;
+    cursor: pointer;
+}
+.__sign_SHAS_panel .top .right .close_line_1 {
+    position: absolute;
+    width: 65%;
+    height: 1px;
+    background-color: grey;
+    left: 3px;
+    top: 11px;
+    transform: rotate(45deg);
+}
+.__sign_SHAS_panel .top .right .close_line_2 {
+    position: absolute;
+    width: 65%;
+    height: 1px;
+    background-color: grey;
+    left: 3px;
+    top: 11px;
+    transform: rotate(-45deg);
+}
+
+
+.__sign_SHAS_panel .main {
+    width: 100%;
+    flex-grow: 1;
+    flex-direction: column;
+    flex-basis: 100%;
+    overflow: auto;
+}
+.__sign_SHAS_panel .main .listPage .create_new_line {
+    margin-top: 4px;
+}
+.__sign_SHAS_panel .main .listPage .create_new_line .create_new_line_button {
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 22px;
+    margin-top: 8px;
+    transition: background-color 0.3s;
+    padding: 0 4px;
+    border-radius: 4px;
+}
+.__sign_SHAS_panel .main .listPage .create_new_line .create_new_line_button:hover {
+    background-color: gainsboro;
+}
+.__sign_SHAS_panel .main .listPage .content {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    user-select: none;
+}
+
+.__sign_SHAS_panel .main .page.hide {
+    display: none;
+}
+.__sign_SHAS_panel .main .content .content_line,
+.__sign_SHAS_panel .main .content .content_column_line {
+    display: flex;
+    padding: 10px 10px 0 20px;
+}
+.__sign_SHAS_panel .main .content .content_line > div,
+.__sign_SHAS_panel .main .content .content_column_line > div {
+    display: flex;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.__sign_SHAS_panel .main .content .content_line .content_line_name {
+    position: relative;
+    cursor: pointer;
+    padding-right: 6px;
+
+}
+.__sign_SHAS_panel .main .content .content_line .content_line_videoEdit {
+    color: gainsboro;
+    transition: color 0.3s;
+}
+.__sign_SHAS_panel .main .content .content_line .content_line_videoEdit.editable {
+    cursor: pointer;
+    color: black;
+}
+.__sign_SHAS_panel .main .content .content_line .content_line_videoEdit.editable:hover {
+    color: deepskyblue;
+}
+.__sign_SHAS_panel .main .content .content_line .content_line_name,
+.__sign_SHAS_panel .main .content .content_column_line .content_column_name {
+    flex-basis: 40%;
+}
+.__sign_SHAS_panel .main .content .content_line .content_line_videoInput {
+    flex-basis: 60%;
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: center;
+}
+.__sign_SHAS_panel .main .content .content_column_line .content_column_videoInput {
+    flex-basis: 60%;
+}
+.__sign_SHAS_panel .main .content .content_line .content_line_videoInput:hover {
+    color: deepskyblue;
+}
+.__sign_SHAS_panel .main .content .content_line .content_line_videoEdit,
+.__sign_SHAS_panel .main .content .content_line .content_line_volume,
+.__sign_SHAS_panel .main .content .content_column_line .content_column_edit,
+.__sign_SHAS_panel .main .content .content_column_line .content_column_volume {
+    flex-basis: 80px;
+}
+
+.__sign_SHAS_panel .main .content .content_column_line .content_column_delete,
+.__sign_SHAS_panel .main .content .content_line .content_line_delete {
+    flex-basis: 36px;
+}
+
+.__sign_SHAS_panel .main .content .content_line .content_line_delete {
+    transition: all 0.3s;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 12px;
+
+}
+
+.__sign_SHAS_panel .main .content .content_line .content_line_delete:hover {
+    background-color: gainsboro;
+}
+
+.__sign_SHAS_panel .user_input, .__sign_SHAS_panel .user_input:focus {
+    position: absolute;
+    left: 0;
+    top: -1px;
+    width: 100%;
+    height: 100%;
+    font-size: 16px;
+    display: block;
+    outline: 0;
+    border: 0;
+    text-align: center;
+}
+
+.__sign_SHAS_panel .main .editPage {
+    display: block;
+    flex-direction: column;
+}
+.__sign_SHAS_panel .main .editPage .editPage_title {
+    padding: 10px 0;
+    font-size: 18px;
+    text-align: center;
+}
+.__sign_SHAS_panel .main .editPage .editPage_column {
+    display: flex;
+    padding: 4px 0;
+}
+.__sign_SHAS_panel .main .editPage .editPage_column .editPage_column_descriptions {
+    text-align: center;
+    justify-content: center;
+    flex-basis: 50%;
+    font-size: 16px;
+}
+.__sign_SHAS_panel .main .editPage .editPage_column .editPage_column_occupy {
+    padding: 0 6px;
+    flex-basis: 20px;
+    margin-right: 30px;
+}
+.__sign_SHAS_panel .main .editPage .content {
+    /*display: flex;*/
+    padding: 10px 0;
+    /*flex-direction: column;*/
+}
+.__sign_SHAS_panel .main .editPage .editPage_tool {
+    display: flex;
+    padding: 0 4px;
+    height: 24px;
+}
+.__sign_SHAS_panel .main .editPage .editPage_newPoint {
+    display: inline;
+    padding: 0 4px;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-radius: 4px;
+    line-height: 24px;
+}
+.__sign_SHAS_panel .main .editPage .editPage_newPoint:hover {
+    background-color: gainsboro;
+}
+.__sign_SHAS_panel .main .editPage .editPage_export {
+    position: relative;
+    top: 1px;
+    font-size: 14px;
+    color: grey;
+    cursor: pointer;
+    transition: all 0.3s;
+    padding: 0 4px;
+}
+.__sign_SHAS_panel .main .editPage .editPage_export:hover {
+    color: skyblue;
+}
+.__sign_SHAS_panel .main .editPage .editPage_export:active {
+    outline: gainsboro 1px solid;
+}
+
+.__sign_SHAS_panel .main .editPage .editPage_bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 24px;
+    display: flex;
+}
+.__sign_SHAS_panel .main .editPage .editPage_bottom .editPage_bottom_externalVideoTime {
+    text-align: center;
+    flex-basis: 120px;
+    font-size: 12px;
+    color: grey;
+    line-height: 24px;
+    /*outline: green 1px solid;*/
+}
+
+
+.__sign_SHAS_measuringBlock {
+    position: absolute;
+    cursor: grab;
+    display: flex;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+.__sign_SHAS_measuringBlock.edit {
+    pointer-events: all;
+}
+.__sign_SHAS_measuringBlock.edit video {
+    outline: gainsboro 1px solid;
+    opacity: 0.5;
+}
+.__sign_SHAS_measuringBlock.show, .__sign_SHAS_measuringBlock.alwaysShow {
+    opacity: 1;
+    z-index: 1;
+}
+.__sign_SHAS_measuringBlock.alwaysShow {
+    z-index: 2;
+}
+.__sign_SHAS_measuringBlock video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    outline: transparent 1px solid;
+    transition: opacity 0.3s, outline-color 0.3s;
+}
+.__sign_SHAS_measuringBlock.edit .__sign_SHAS_measuringBlock_resize {
+    background-color: rgba(0, 0, 0, 0.1);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    cursor: nwse-resize;
+    border-top: gainsboro 1px solid;
+    border-left: gainsboro 1px solid;
+    width: var(--measuringBlockResizeSize);
+    height: var(--measuringBlockResizeSize);
+}
+
+.__sign_SHAS_videoArea {
+    position: absolute;
+    pointer-events: none;
+}
+
+.__sign_SHAS_timestampEditor {
+    width: 200px;
+    display: flex;
+    flex-grow: 1;
+    flex-basis: 80px;
+    margin-left: 10px;
+}
+
+.__sign_SHAS_timestampEditor_hours,
+.__sign_SHAS_timestampEditor_minutes,
+.__sign_SHAS_timestampEditor_seconds,
+.__sign_SHAS_timestampEditor_milliseconds {
+    position: relative;
+    flex-grow: 1;
+    font-size: 16px;
+    text-align: center;
+}
+
+
+.__sign_SHAS_referencePointLine {
+    display: flex;
+}
+.__sign_SHAS_referencePointLine_timestampEditorOfExternalVideo,
+.__sign_SHAS_referencePointLine_timestampEditorOfOriginalVideo {
+    justify-content: center;
+    flex-basis: 50%;
+}
+
+.__sign_SHAS_referencePointLine_delete {
+    text-align: center;
+    padding: 0 2px;
+    flex-basis: 20px;
+    margin-right: 30px;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-radius: 6px;
+    line-height: 24px;
+}
+.__sign_SHAS_referencePointLine_delete:hover {
+    background-color: gainsboro;
+}
+
+.bpx-player-video-area video.ban {
+    pointer-events: none;
+}
+
+
+
+.__sign_SHAS_replyListImport {
+    cursor: pointer;
+    text-decoration: underline;
+    transition: color 0.3s;
+}
+.__sign_SHAS_replyListImport:hover {
+    color: grey;
+}
+.__sign_SHAS_replyListImport:active {
+    transition: color 0s;
+    color: darkred;
+}
+
+
+
+
+
+
+
