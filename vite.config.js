@@ -14,6 +14,7 @@ export default defineConfig({
         namespace: 'simultaneous-hearing-and-sight',
         match: ['*://www.bilibili.com/video/*'],
         version: '0.0.1',
+        license: 'MIT',
       },
     }),
   ],
