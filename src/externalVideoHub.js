@@ -63,7 +63,7 @@ const searchDeserializingData = (text) => {
 	let lastSliceIndex = 0;
 
 	for (const regExpMatchArray of text.matchAll(patternMain)) {
-		clog(regExpMatchArray)
+		// clog(regExpMatchArray)
 		const frontText = regExpMatchArray.input.slice(lastSliceIndex, regExpMatchArray.index);
 		const deserializingData = regExpMatchArray[1];
 		lastSliceIndex = regExpMatchArray.index + regExpMatchArray[0].length;

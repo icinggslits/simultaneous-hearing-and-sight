@@ -22,6 +22,13 @@ const measuringBlockMappingResize = new Map();
  */
 const measuringBlockMappingPosition = new Map();
 
+// 更新视频比例(从外部导入视频时，视频尺寸数据注入得晚)
+const updateVideoRatios = (measuringBlock) => {
+	const video = measuringBlock.querySelector('video');
+	measuringBlock.dataset.videoWidth = video.videoWidth;
+	measuringBlock.dataset.videoHeight = video.videoHeight;
+};
+
 const MeasuringBlock = {
 	/**
 	 * 是否是MeasuringBlock对象
@@ -207,6 +214,7 @@ const MeasuringBlock = {
 		const {height: parentHeight} = measuringBlock[targetNodeAttr].getBoundingClientRect();
 		measuringBlock.style.width = `${(width / parentWidth) * 100}%`;
 		measuringBlock.style.height = `${((width * aspectRatio) / parentHeight) * 100}%`;
+		// clog(width, aspectRatio, parentHeight)
 
 		measuringBlockMappingResize.set(measuringBlock, {width, parentWidth});
 		// if (Convert.isNumber(measuringBlock.dataset.videoWidth)) {
@@ -300,6 +308,8 @@ const MeasuringBlock = {
 	importVideo(measuringBlock, videoFileUrl) {
 		const video = measuringBlock[videoAttr];
 		video.src = videoFileUrl;
+
+		updateVideoRatios(measuringBlock);
 	},
 
 	/**
