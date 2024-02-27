@@ -40,40 +40,49 @@ const videoProportions = () => {
 };
 
 
-// 视频区域大小变动自更新数据
-{
-	const area = document.querySelector('.bpx-player-video-area');
 
+const {area, videoArea} = (() => {
+	const area = document.querySelector('.bpx-player-video-area');
 	const videoArea = createNode(`<div class="__sign_SHAS_videoArea"></div>`);
 	area.appendChild(videoArea);
-
 	const {width, height} = area.getBoundingClientRect();
 	area.dataset.lastWidth = width.toString();
 	area.dataset.lastHeight = height.toString();
+
+	return {area, videoArea}
+})();
+
+
+const updateArea = () => {
+	const {width: areaWidth, height: areaHeight} = area.getBoundingClientRect();
+	const {videoWidth, videoHeight} = videoProportions();
+	const {width, height} = area.getBoundingClientRect();
+
+	if (videoHeight * (areaWidth / areaHeight) >= videoWidth) {
+		// 视频高等于父级DOM高
+		const videoAreaWidth = areaHeight * (videoWidth / videoHeight);
+		videoArea.style.left = `${(areaWidth - videoAreaWidth) / 2}px`;
+		videoArea.style.top = `0`;
+		videoArea.style.width = `${videoAreaWidth}px`;
+		videoArea.style.height = '100%';
+	} else {
+		// 视频宽等于父级DOM宽
+		const videoAreaHeight = areaWidth * (videoHeight / videoWidth);
+		videoArea.style.top = `${(areaHeight - videoAreaHeight) / 2}px`;
+		videoArea.style.left = `0`;
+		videoArea.style.width = '100%';
+		videoArea.style.height = `${videoAreaHeight}px`;
+	}
+
+	area.dataset.lastWidth = width.toString();
+	area.dataset.lastHeight = height.toString();
+};
+
+
+// 视频区域大小变动自更新数据
+{
 	const ob = new ResizeObserver(() => {
-		const {width: areaWidth, height: areaHeight} = area.getBoundingClientRect();
-		const {videoWidth, videoHeight} = videoProportions();
-
-		if (videoHeight * (areaWidth / areaHeight) >= videoWidth) {
-			// 视频高等于父级DOM高
-			const videoAreaWidth = areaHeight * (videoWidth / videoHeight);
-			videoArea.style.left = `${(areaWidth - videoAreaWidth) / 2}px`;
-			videoArea.style.top = `0`;
-			videoArea.style.width = `${videoAreaWidth}px`;
-			videoArea.style.height = '100%';
-		} else {
-			// 视频宽等于父级DOM宽
-			const videoAreaHeight = areaWidth * (videoHeight / videoWidth);
-			videoArea.style.top = `${(areaHeight - videoAreaHeight) / 2}px`;
-			videoArea.style.left = `0`;
-			videoArea.style.width = '100%';
-			videoArea.style.height = `${videoAreaHeight}px`;
-		}
-
-		area.dataset.lastWidth = width.toString();
-		area.dataset.lastHeight = height.toString();
-
-
+		updateArea();
 	});
 	ob.observe(area);
 }
@@ -303,4 +312,4 @@ const bilibiliPlayerVideoController = {
 	},
 };
 
-export {bilibiliPlayerVideo, bilibiliPlayerVideoController};
+export {bilibiliPlayerVideo, bilibiliPlayerVideoController, updateArea};

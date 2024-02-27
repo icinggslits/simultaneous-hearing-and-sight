@@ -2,6 +2,7 @@ import {clog, Convert, createNode, mouseDrag} from './unit.js';
 import Config from './config.js';
 import externalVideoHub from './externalVideoHub.js';
 import ListContentLine from './ListContentLine.js';
+import {updateArea} from './bilibiliPlayerVideoEvent.js';
 
 
 
@@ -27,6 +28,8 @@ const updateVideoRatios = (measuringBlock) => {
 	const video = measuringBlock.querySelector('video');
 	measuringBlock.dataset.videoWidth = video.videoWidth;
 	measuringBlock.dataset.videoHeight = video.videoHeight;
+
+	updateArea();
 };
 
 const MeasuringBlock = {
