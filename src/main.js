@@ -51,10 +51,13 @@ import './replyList.js';
 
 
 // 面板开启快捷键
-window.addEventListener('keydown', (event) => {
-	const {key, ctrlKey,shiftKey, altKey} = event;
-	if (key === Config.key && ctrlKey === Config.ctrlKey && altKey === Config.altKey) {
-		Panel.toggle();
+window.addEventListener('keydown', event => {
+	const {code, ctrlKey,shiftKey, altKey} = event;
+	if (code === Config.code && ctrlKey === Config.ctrlKey && shiftKey === Config.shiftKey && altKey === Config.altKey) {
+		const focusNode = document.body.querySelector('*:focus');
+		if (!focusNode) {
+			Panel.toggle();
+		}
 	}
 });
 
